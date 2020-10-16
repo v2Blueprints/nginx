@@ -1,0 +1,46 @@
+{
+ "variables" : {
+  "fqdn" : "www.demo.com",
+  "port" : "8080",
+  "DEBIAN_FRONTEND" : "noninteractive"
+ },
+  "builders": [
+    {
+      "type": "lxd",
+      "name": "lxd-ubuntu",
+      "image": "ubuntu:20.04",
+      "output_image": "ubuntu:test",
+      "publish_properties": {
+        "description": "Trivial repackage with Packer"
+      }
+    }
+   ],
+ "provisioners": [
+    {
+    "type" : "file",
+    "source" : "injections/",
+    "destination" : "/tmp/"
+   },
+    {
+    "type" : "file",
+    "source" : "user",
+    "destination" : "/tmp/"
+   },
+    {
+      "type": "shell",
+      "inline": ["apt-get -y update ; apt-get install -y nginx git openssh-server"]
+    },
+    {
+      "type": "shell",
+      "inline": ["/sbin/useradd -d /home/admin/ -g 0 -m admin"]
+    },
+       {
+      "type": "shell",
+      "inline": ["ls -laR /tmp/user/ ; cp -r /tmp/user/ubuntu /home/  ; chmod oug-w -R /home/ubuntu/ ; cp /tmp/user/ubuntu/sudoers /etc/sudoers.d/ubuntu ; chmod 700 /etc/sudoers.d/ubuntu ;chown ubuntu -R ~ubuntu",
+   "ls -laR /home/ubuntu ; id ubuntu"] },
+    {
+      "type": "shell",
+      "inline": ["git clone https://github.com/jvodan/helloworldhtml /var/www/hello_world ; cd /tmp/injections ; cp -r . / ; cat /etc/nginx/sites-enabled/default"]
+    }
+  ]
+}

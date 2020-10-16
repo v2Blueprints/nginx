@@ -1,0 +1,38 @@
+[INFO] Packer version: 1.6.3 [go1.15.2 linux amd64]
+Checking 'PACKER_CONFIG' for a config file path
+'PACKER_CONFIG' not set; checking the default config file path
+Attempting to open config file: /home/james/.packerconfig
+[WARN] Config file doesn't exist: /home/james/.packerconfig
+Setting cache directory: /home/james/packer/nginx/packer_cache
+args: []string{"packer-builder-lxd"}
+Plugin address: unix /tmp/packer-plugin909385609
+Waiting for connection...
+Serving a plugin connection...
+Executing lxc command: []string{"launch", "--ephemeral=false", "--profile=default", "ubuntu:20.04", "packer-lxd-ubuntu"}
+Received interrupt signal (count: 1). Ignoring.
+Received interrupt signal (count: 2). Ignoring.
+Received interrupt signal (count: 3). Ignoring.
+stdout: Creating packer-lxd-ubuntu
+This operation can't be cancelled (interrupt two more times to force)                                                                      Starting packer-lxd-ubuntu
+Remapping container filesystemThis operation can't be cancelled (interrupt two more times to force)                                                                      This operation can't be cancelled (interrupt two more times to force)
+stderr: 
+Sleeping for 3 seconds...
+Executing lxc command: []string{"delete", "--force", "packer-lxd-ubuntu"}
+Received interrupt signal (count: 4). Ignoring.
+stdout: 
+stderr: 
+panic: interface conversion: interface {} is nil, not string
+
+goroutine 57 [running]:
+github.com/hashicorp/packer/builder/lxd.(*Builder).Run(0xc000ddf8c0, 0x520d6c0, 0xc0005b60c0, 0x5227f20, 0xc000516750, 0x518eb00, 0xc000302980, 0x0, 0x0, 0xc00088fbd0, ...)
+	/home/circleci/project/packer/builder/lxd/builder.go:65 +0x5d5
+github.com/hashicorp/packer/packer/rpc.(*BuilderServer).Run(0xc00080ae80, 0x1, 0xc0004ffe60, 0x0, 0x0)
+	/home/circleci/project/packer/packer/rpc/builder.go:117 +0x1c4
+reflect.Value.call(0xc00039b800, 0xc0002180e8, 0x13, 0x4bd13c4, 0x4, 0xc00088ff08, 0x3, 0x3, 0x4d19078, 0xc00007e000, ...)
+	/usr/local/go/src/reflect/value.go:475 +0x8c7
+reflect.Value.Call(0xc00039b800, 0xc0002180e8, 0x13, 0xc0004c3f08, 0x3, 0x3, 0xc00050a5b8, 0xc0000a7910, 0x4607c0)
+	/usr/local/go/src/reflect/value.go:336 +0xb9
+net/rpc.(*service).call(0xc00080aec0, 0xc00020a410, 0xc0004ff8c0, 0xc0004ff8d0, 0xc0002b0380, 0xc00024d1a0, 0x3d82f60, 0xc0004ffe3c, 0x18a, 0x3c91be0, ...)
+	/usr/local/go/src/net/rpc/server.go:377 +0x189
+created by net/rpc.(*Server).ServeCodec
+	/usr/local/go/src/net/rpc/server.go:474 +0x445

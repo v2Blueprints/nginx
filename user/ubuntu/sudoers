@@ -1,0 +1,4 @@
+
+ubuntu ALL=(ALL) NOPASSWD:ALL
+
+
