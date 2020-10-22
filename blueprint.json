@@ -1,0 +1,31 @@
+{
+	"title": "nginx",
+	"description": "Nginx web Server",
+	"configuration": {
+		"DEBIAN_FRONTEND": "noninteractive"
+	},
+	"os_packages": [
+		{
+			"type": "debian",
+			"name": "nginx"
+		}
+	],
+	"persistent": [
+		{
+			"type": "dir",
+			"destination": "/var/log/nginx",
+			"source": "/var/lib/containers/^^identifier^^/log"
+		}
+	],
+	"images": [
+		{
+			"type": "lxd",
+			"image": "images/debian/stretch/cloud"
+		}
+	],
+	"containers": [
+		{
+			"type": "lxd"
+		}
+	]
+}

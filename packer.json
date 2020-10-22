@@ -1,0 +1,22 @@
+{
+ "variables" : {
+  "DEBIAN_FRONTEND" : "noninteractive"
+ },
+  "builders": [
+    {
+      "type": "lxd",
+      "name": "lxd-ubuntu",
+      "image": "images/debian/stretch/cloud",
+      "output_image": "nginx:test",
+      "publish_properties": {
+        "description": "nginx web server"
+      }
+    }
+   ],
+ "provisioners": [
+    {
+      "type": "shell",
+      "inline": ["apt-get -y update", "apt-get install -y nginx "]
+    }
+  ]
+}
