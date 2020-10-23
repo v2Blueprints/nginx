@@ -1,9 +1,6 @@
 {
 	"title": "nginx",
 	"description": "Nginx web Server",
-	"configuration": {
-		"DEBIAN_FRONTEND": "noninteractive"
-	},
 	"os_packages": [
 		{
 			"type": "debian",
@@ -20,7 +17,7 @@
 	"images": [
 		{
 			"type": "lxd",
-			"image": "images/debian/stretch/cloud"
+			"image": "enginesd_debian_base"
 		}
 	],
 	"containers": [
