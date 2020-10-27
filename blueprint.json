@@ -7,13 +7,6 @@
 			"name": "nginx"
 		}
 	],
-	"volumes": [
-		{
-			"type": "dir",
-			"destination": "/var/log/nginx",
-			"source": "/var/lib/containers/^^identifier^^/log"
-		}
-	],
 	"images": [
 		{
 			"type": "lxd",
