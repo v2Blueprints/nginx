@@ -7,7 +7,7 @@
 			"name": "nginx"
 		}
 	],
-	"persistent": [
+	"volumes": [
 		{
 			"type": "dir",
 			"destination": "/var/log/nginx",
