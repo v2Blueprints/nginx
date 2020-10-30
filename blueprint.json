@@ -1,12 +1,11 @@
 {
 	"title": "nginx",
 	"description": "Nginx web Server",
-	"os_packages": [
-		{
-			"type": "debian",
-			"name": "nginx"
-		}
-	],
+	"os_packages": {
+		"adds": [
+			"nginx"
+		]
+	},
 	"images": [
 		{
 			"type": "lxd",
