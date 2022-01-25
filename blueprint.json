@@ -1,20 +1,30 @@
 {
 	"title": "nginx",
 	"description": "Nginx web Server",
-	"os_packages": {
+	"system_packages": {
 		"adds": [
 			"nginx"
 		]
 	},
-	"images": [
+	"bindings": [
 		{
-			"type": "lxd",
-			"image": "enginesd_debian_base"
+			"type": "embed",
+			"runtimes": [
+				"lxd"
+			],
+			"target": {
+				"repository": "https://github.com/v2Blueprints/enginesd_debian_base"
+			}
 		}
-	],
-	"containers": [
-		{
-			"type": "lxd"
-		}
-	]
+  ],
+  "images": [
+    {
+      "runtimes": [
+        "docker"
+      ],
+      "target": {
+        "repository": "https://github.com/v2Blueprints/enginesd_debian_base"
+      }
+    }
+  ]
 }
