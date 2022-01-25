@@ -1,6 +1,8 @@
 {
-	"title": "nginx",
-	"description": "Nginx web Server",
+	"about": {
+		"title": "nginx",
+		"explanation": "Nginx web Server"
+	},
 	"system_packages": {
 		"adds": [
 			"nginx"
